@@ -1,5 +1,5 @@
 before_install:
- - chmod +x gradlew
+ - chmod +x gradlew --debug
  
 language: android
 
@@ -11,5 +11,3 @@ android:
 
     # The BuildTools version used by your project
     - build-tools-19.1.0
-script:
-  --debug
