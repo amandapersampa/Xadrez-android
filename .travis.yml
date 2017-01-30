@@ -5,9 +5,8 @@ jdk:
     - oraclejdk8
 android:
   components:
-    - tools
-    - build-tools-25.0.0
-    - android-25
+      - tools # needs to be first to get new package versions
+    - build-tools-25.0.2
     - platform-tools
     - extra-google-google_play_services
     - extra-google-m2repository
