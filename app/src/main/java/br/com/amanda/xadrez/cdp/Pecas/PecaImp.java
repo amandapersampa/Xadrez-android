@@ -5,6 +5,7 @@ import java.util.List;
 import br.com.amanda.xadrez.cdp.Cor;
 import br.com.amanda.xadrez.cdp.Posicao;
 import br.com.amanda.xadrez.cdp.movimentos.Movimento;
+import br.com.amanda.xadrez.utils.ConquistaNaoPermitidaError;
 import br.com.amanda.xadrez.utils.MovimentoNaoPermitidoError;
 
 public abstract class PecaImp implements Peca {
@@ -12,7 +13,7 @@ public abstract class PecaImp implements Peca {
     private Posicao posicao;
     private boolean primeiroMovimento;
 
-    public PecaImp(Posicao posicao, Cor cor) {
+    protected PecaImp(Posicao posicao, Cor cor) {
         this.cor = cor;
         this.posicao = posicao;
         this.primeiroMovimento = true;
@@ -41,6 +42,17 @@ public abstract class PecaImp implements Peca {
         }
         else {
             throw new MovimentoNaoPermitidoError();
+        }
+    }
+
+    @Override
+    public void conquistar(Posicao nova) throws ConquistaNaoPermitidaError {
+        if (validaConquista(nova)) {
+            posicao = nova;
+            moveu();
+        }
+        else {
+            throw new ConquistaNaoPermitidaError();
         }
     }
 

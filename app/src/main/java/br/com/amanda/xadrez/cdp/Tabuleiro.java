@@ -12,6 +12,7 @@ import br.com.amanda.xadrez.cdp.Pecas.Rainha;
 import br.com.amanda.xadrez.cdp.Pecas.Rei;
 import br.com.amanda.xadrez.cdp.Pecas.Torre;
 import br.com.amanda.xadrez.cdp.Pecas.Vazio;
+import br.com.amanda.xadrez.utils.ConquistaNaoPermitidaError;
 import br.com.amanda.xadrez.utils.MovimentoNaoPermitidoError;
 import br.com.amanda.xadrez.utils.PecaInexistenteError;
 
@@ -20,7 +21,6 @@ public class Tabuleiro {
     private final Map<Posicao, Peca> espacos;
     private final PosicaoFactory posicaoFactory;
     private final PecaFactory pecaFactory;
-    private final int altura = 10;
     private final int largura = 10;
     private final Peca vazio;
     private final Peca parede;
@@ -51,6 +51,7 @@ public class Tabuleiro {
     }
 
     private void adicionaEspacosVazios() throws PecaInexistenteError {
+        int altura = 10;
         for (int i = 3; i < altura - 3 ; i++) {
             for (int j = 0; j < largura; j++) {
                 addPeca("Vazio", i, j, Cor.INDIFERENTE);
@@ -104,6 +105,19 @@ public class Tabuleiro {
         }
         else{
             throw new MovimentoNaoPermitidoError();
+        }
+    }
+
+    public void conquistar(Posicao posicao, Posicao nova) throws ConquistaNaoPermitidaError, PecaInexistenteError {
+        Peca novaPeca = espacos.get(nova);
+        Peca atualPeca = espacos.get(posicao);
+        if (novaPeca.equals(vazio)) {
+            atualPeca.conquistar(nova);
+            addPeca("Vazio", posicao.getEixoX(), posicao.getEixoY(), Cor.INDIFERENTE);
+            addPeca(atualPeca, nova.getEixoX(), nova.getEixoY());
+        }
+        else{
+            throw new ConquistaNaoPermitidaError();
         }
     }
 

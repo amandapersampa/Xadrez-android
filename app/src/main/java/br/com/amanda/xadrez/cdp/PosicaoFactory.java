@@ -8,7 +8,7 @@ import java.util.List;
  */
 
 public class PosicaoFactory {
-    List<Posicao> posicoes;
+    private final List<Posicao> posicoes;
 
     public PosicaoFactory(){
         posicoes = new ArrayList<>();

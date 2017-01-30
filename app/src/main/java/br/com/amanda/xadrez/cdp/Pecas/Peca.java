@@ -2,6 +2,7 @@ package br.com.amanda.xadrez.cdp.Pecas;
 
 import br.com.amanda.xadrez.cdp.Cor;
 import br.com.amanda.xadrez.cdp.Posicao;
+import br.com.amanda.xadrez.utils.ConquistaNaoPermitidaError;
 import br.com.amanda.xadrez.utils.MovimentoNaoPermitidoError;
 
 /**
@@ -19,4 +20,5 @@ public interface Peca {
 
     void mover(Posicao nova) throws MovimentoNaoPermitidoError;
 
+    void conquistar(Posicao nova) throws ConquistaNaoPermitidaError;
 }

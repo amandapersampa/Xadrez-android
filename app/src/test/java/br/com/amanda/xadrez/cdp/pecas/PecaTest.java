@@ -14,13 +14,13 @@ import static org.junit.Assert.*;
 
 @Ignore
 public class PecaTest {
-    private final PosicaoFactory posicaoFactory = new PosicaoFactory();
-    private final PecaFactory pecaFactory = new PecaFactory(posicaoFactory);
     private final int posX = 5;
     private final int posY = 5;
     private Peca peca;
 
     public PecaTest(String peca, Cor cor) throws PecaInexistenteError {
+        PosicaoFactory posicaoFactory = new PosicaoFactory();
+        PecaFactory pecaFactory = new PecaFactory(posicaoFactory);
         this.peca = pecaFactory.fabricar(peca, posX, posY, cor);
     }
 
@@ -98,7 +98,7 @@ public class PecaTest {
 
     @Test
     public void testaConquistaHorizontal(boolean expected) throws Exception {
-        PosicaoImp p1 = new PosicaoImp(posX+2,posY);
+        PosicaoImp p1 = new PosicaoImp(posX+5,posY);
 
         boolean possoMover = peca.validaConquista(p1);
 

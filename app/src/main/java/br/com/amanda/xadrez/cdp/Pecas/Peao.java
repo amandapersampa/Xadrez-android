@@ -9,10 +9,6 @@ import br.com.amanda.xadrez.cdp.movimentos.DiagonalDistancia1;
 import br.com.amanda.xadrez.cdp.movimentos.Movimento;
 import br.com.amanda.xadrez.cdp.movimentos.VerticalDistancia1;
 
-/**
- * Created by amand on 26/01/2017.
- */
-
 public class Peao extends PecaImp {
     private final List<Movimento> movimentos;
     private final List<Movimento> conquistas;
@@ -45,7 +41,8 @@ public class Peao extends PecaImp {
     @Override
     protected boolean isMovimentoEspecial(Posicao nova){
         if(isPrimeiroMovimento()){
-            return this.getPosicao().subtrai(nova).getEixoX() == 2;
+            Posicao resultante = this.getPosicao().subtrai(nova);
+            return resultante.getEixoX() == 2 && resultante.getEixoY() == 0;
         }
         return false;
     }

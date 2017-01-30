@@ -9,10 +9,6 @@ import br.com.amanda.xadrez.cdp.Posicao;
 import br.com.amanda.xadrez.cdp.movimentos.L;
 import br.com.amanda.xadrez.cdp.movimentos.Movimento;
 
-/**
- * Created by amand on 26/01/2017.
- */
-
 public class Cavalo extends PecaImp {
     private final List<Movimento> movimentos;
 

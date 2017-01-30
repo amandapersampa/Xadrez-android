@@ -38,4 +38,13 @@ public class TabuleiroTest {
         assertEquals(peca, movida);
     }
 
+    @Test
+    public void conquistarPeao() throws Exception, MovimentoNaoPermitidoError {
+        Posicao p0 = posicaoFactory.fabricarPosicao(2,1);
+        Posicao p1 = posicaoFactory.fabricarPosicao(4,1);
+        Peca peca = tab.getPeca(p0);
+        tab.mover(p0, p1);
+        Peca movida = tab.getPeca(p1);
+        assertEquals(peca, movida);
+    }
 }
