@@ -1,14 +1,8 @@
 before_install:
- - chmod +x gradlew
- 
- language: android
-
+    chmod +x gradlew
+language: android
 android:
-  components:
-    # use the latest revision of Android SDK Tools
-    - platform-tools
-    - tools
-
+    components:
     # The BuildTools version used by your project
     - build-tools-24.0.3
     - android-24
