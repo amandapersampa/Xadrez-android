@@ -8,6 +8,9 @@ import br.com.amanda.xadrez.cdp.Cor;
 import br.com.amanda.xadrez.cdp.Posicao;
 import br.com.amanda.xadrez.cdp.PosicaoFactory;
 import br.com.amanda.xadrez.cdp.PosicaoImp;
+import br.com.amanda.xadrez.cdp.peca.Peca;
+import br.com.amanda.xadrez.cdp.peca.PecaFactory;
+import br.com.amanda.xadrez.cdp.peca.Vazio;
 import br.com.amanda.xadrez.utils.PecaInexistenteError;
 
 import static org.junit.Assert.*;

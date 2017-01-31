@@ -2,9 +2,7 @@ package br.com.amanda.xadrez.cdp;
 
 import org.junit.Test;
 
-import br.com.amanda.xadrez.cdp.pecas.PecaFactory;
-
-import static org.junit.Assert.*;
+import br.com.amanda.xadrez.cdp.peca.PecaFactory;
 
 /**
  * Created by amand on 31/01/2017.

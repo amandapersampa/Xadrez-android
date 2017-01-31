@@ -4,14 +4,11 @@ import org.junit.Test;
 
 import br.com.amanda.xadrez.cdp.Cor;
 import br.com.amanda.xadrez.cdp.PosicaoImp;
-import br.com.amanda.xadrez.cdp.pecas.Bispo;
-import br.com.amanda.xadrez.cdp.pecas.Peca;
+import br.com.amanda.xadrez.cdp.peca.Bispo;
+import br.com.amanda.xadrez.cdp.peca.Peca;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by amand on 26/01/2017.
- */
 public class DiagonalDistancia1Test {
     private final Movimento mv = new Diagonal(1);
     private final Peca peca = new Bispo(Cor.BRANCA);

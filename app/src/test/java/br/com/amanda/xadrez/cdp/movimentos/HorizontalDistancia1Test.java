@@ -4,8 +4,8 @@ import org.junit.Test;
 
 import br.com.amanda.xadrez.cdp.Cor;
 import br.com.amanda.xadrez.cdp.PosicaoImp;
-import br.com.amanda.xadrez.cdp.pecas.Peca;
-import br.com.amanda.xadrez.cdp.pecas.Rei;
+import br.com.amanda.xadrez.cdp.peca.Peca;
+import br.com.amanda.xadrez.cdp.peca.Rei;
 
 import static org.junit.Assert.*;
 

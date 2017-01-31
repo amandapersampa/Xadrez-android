@@ -1,4 +1,4 @@
-package br.com.amanda.xadrez.cdp.pecas;
+package br.com.amanda.xadrez.cdp.peca;
 
 import java.util.ArrayList;
 import java.util.List;

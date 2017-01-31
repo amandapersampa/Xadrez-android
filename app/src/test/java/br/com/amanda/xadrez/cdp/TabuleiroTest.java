@@ -2,12 +2,11 @@ package br.com.amanda.xadrez.cdp;
 
 import org.junit.Test;
 
-import br.com.amanda.xadrez.cdp.pecas.Cavalo;
-import br.com.amanda.xadrez.cdp.pecas.Peao;
-import br.com.amanda.xadrez.cdp.pecas.Peca;
-import br.com.amanda.xadrez.cdp.pecas.PecaFactory;
-import br.com.amanda.xadrez.cdp.pecas.Torre;
-import br.com.amanda.xadrez.cdp.pecas.Vazio;
+import br.com.amanda.xadrez.cdp.peca.Peao;
+import br.com.amanda.xadrez.cdp.peca.Peca;
+import br.com.amanda.xadrez.cdp.peca.PecaFactory;
+import br.com.amanda.xadrez.cdp.peca.Torre;
+import br.com.amanda.xadrez.cdp.peca.Vazio;
 import br.com.amanda.xadrez.utils.MovimentoNaoPermitidoError;
 import br.com.amanda.xadrez.utils.PecaInexistenteError;
 import static org.junit.Assert.*;

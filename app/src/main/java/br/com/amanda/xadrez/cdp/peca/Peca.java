@@ -1,4 +1,4 @@
-package br.com.amanda.xadrez.cdp.pecas;
+package br.com.amanda.xadrez.cdp.peca;
 
 import br.com.amanda.xadrez.cdp.Cor;
 import br.com.amanda.xadrez.cdp.Posicao;

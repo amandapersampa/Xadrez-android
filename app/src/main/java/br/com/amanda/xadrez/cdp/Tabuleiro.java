@@ -1,12 +1,9 @@
 package br.com.amanda.xadrez.cdp;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import br.com.amanda.xadrez.cdp.pecas.Peca;
-import br.com.amanda.xadrez.cdp.pecas.PecaFactory;
+import br.com.amanda.xadrez.cdp.peca.Peca;
+import br.com.amanda.xadrez.cdp.peca.PecaFactory;
 import br.com.amanda.xadrez.utils.ConquistaNaoPermitidaError;
 import br.com.amanda.xadrez.utils.MovimentoNaoPermitidoError;
 import br.com.amanda.xadrez.utils.PecaInexistenteError;

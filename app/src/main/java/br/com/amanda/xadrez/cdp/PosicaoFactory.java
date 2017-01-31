@@ -1,15 +1,9 @@
 package br.com.amanda.xadrez.cdp;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import br.com.amanda.xadrez.cdp.pecas.Peca;
-import br.com.amanda.xadrez.cdp.pecas.PecaFactory;
+import br.com.amanda.xadrez.cdp.peca.PecaFactory;
+import br.com.amanda.xadrez.cdp.peca.Peca;
 import br.com.amanda.xadrez.utils.PecaInexistenteError;
 
-/**
- * Created by amand on 29/01/2017.
- */
 
 public class PosicaoFactory {
     private final Posicao[][] posicoes;

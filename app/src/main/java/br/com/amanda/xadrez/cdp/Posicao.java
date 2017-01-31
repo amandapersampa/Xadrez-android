@@ -1,6 +1,6 @@
 package br.com.amanda.xadrez.cdp;
 
-import br.com.amanda.xadrez.cdp.pecas.Peca;
+import br.com.amanda.xadrez.cdp.peca.Peca;
 
 public interface Posicao {
     Posicao subtrai(Posicao posicaoImp);
