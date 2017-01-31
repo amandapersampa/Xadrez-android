@@ -30,5 +30,5 @@ addons:
     token: 0a5619a9126f75efab72da9509b32be90719d906
     
 script:
-  - ./gradlew build connectedCheck
+  #- ./gradlew build connectedCheck
   - sonar-scanner
