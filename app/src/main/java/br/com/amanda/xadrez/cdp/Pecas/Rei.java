@@ -1,15 +1,14 @@
-package br.com.amanda.xadrez.cdp.Pecas;
+package br.com.amanda.xadrez.cdp.pecas;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import br.com.amanda.xadrez.cdp.Cor;
-import br.com.amanda.xadrez.cdp.Posicao;
-import br.com.amanda.xadrez.cdp.movimentos.DiagonalDistancia1;
-import br.com.amanda.xadrez.cdp.movimentos.HorizontalDistancia1;
+import br.com.amanda.xadrez.cdp.movimentos.Diagonal;
+import br.com.amanda.xadrez.cdp.movimentos.Horizontal;
 import br.com.amanda.xadrez.cdp.movimentos.Movimento;
-import br.com.amanda.xadrez.cdp.movimentos.VerticalDistancia1;
+import br.com.amanda.xadrez.cdp.movimentos.Vertical;
 
 /**
  * Created by amand on 26/01/2017.
@@ -18,12 +17,12 @@ import br.com.amanda.xadrez.cdp.movimentos.VerticalDistancia1;
 public class Rei extends PecaImp {
     private final List<Movimento> movimentos;
 
-    public Rei(Posicao posicao, Cor cor) {
-        super(posicao,cor);
+    public Rei(Cor cor) {
+        super("Rei", 1,cor);
         List<Movimento> mv = new ArrayList<>();
-        mv.add(new HorizontalDistancia1());
-        mv.add(new VerticalDistancia1());
-        mv.add(new DiagonalDistancia1());
+        mv.add(new Horizontal(getMovimentoMaximo()));
+        mv.add(new Vertical(getMovimentoMaximo()));
+        mv.add(new Diagonal(getMovimentoMaximo()));
         this.movimentos = mv;
     }
 

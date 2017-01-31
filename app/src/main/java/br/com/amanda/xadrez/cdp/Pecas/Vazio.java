@@ -1,4 +1,4 @@
-package br.com.amanda.xadrez.cdp.Pecas;
+package br.com.amanda.xadrez.cdp.pecas;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import br.com.amanda.xadrez.cdp.movimentos.Movimento;
 
 public class Vazio extends PecaImp {
 
-    public Vazio(Posicao posicao){
-        super(posicao, Cor.INDIFERENTE);
+    public Vazio(){
+        super("Vazio", Cor.INDIFERENTE);
     }
 
     @Override

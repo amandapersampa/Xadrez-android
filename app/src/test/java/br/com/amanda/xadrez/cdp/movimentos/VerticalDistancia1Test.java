@@ -2,7 +2,11 @@ package br.com.amanda.xadrez.cdp.movimentos;
 
 import org.junit.Test;
 
+import br.com.amanda.xadrez.cdp.Cor;
 import br.com.amanda.xadrez.cdp.PosicaoImp;
+import br.com.amanda.xadrez.cdp.pecas.Peca;
+import br.com.amanda.xadrez.cdp.pecas.Rainha;
+import br.com.amanda.xadrez.cdp.pecas.Rei;
 
 import static org.junit.Assert.*;
 
@@ -11,13 +15,14 @@ import static org.junit.Assert.*;
  */
 public class VerticalDistancia1Test {
 
-    private final Movimento mv = new VerticalDistancia1();
+    private final Movimento mv = new Vertical(1);
     private final MovimentoTest mvT = new MovimentoTest();
+    private final Peca rei = new Rei(Cor.BRANCA);
 
     @Test
     public void moveNaHorizontalDistancia1() throws Exception {
-        PosicaoImp p0 = new PosicaoImp(1,0);
-        PosicaoImp p1 = new PosicaoImp(0,0);
+        PosicaoImp p0 = new PosicaoImp(rei,1,0);
+        PosicaoImp p1 = new PosicaoImp(rei, 0,0);
 
         boolean possoMover = mv.isValido(p0,p1);
 

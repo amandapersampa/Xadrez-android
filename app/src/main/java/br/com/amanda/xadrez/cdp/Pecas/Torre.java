@@ -1,4 +1,4 @@
-package br.com.amanda.xadrez.cdp.Pecas;
+package br.com.amanda.xadrez.cdp.pecas;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,11 +17,11 @@ import br.com.amanda.xadrez.cdp.movimentos.Vertical;
 public class Torre extends PecaImp {
     private final List<Movimento> movimentos;
 
-    public Torre(Posicao posicao, Cor cor) {
-        super(posicao, cor);
+    public Torre(Cor cor) {
+        super("Torre",cor);
         List<Movimento> mv = new ArrayList<>();
-        mv.add(new Vertical());
-        mv.add(new Horizontal());
+        mv.add(new Vertical(getMovimentoMaximo()));
+        mv.add(new Horizontal(getMovimentoMaximo()));
         this.movimentos = mv;
     }
 

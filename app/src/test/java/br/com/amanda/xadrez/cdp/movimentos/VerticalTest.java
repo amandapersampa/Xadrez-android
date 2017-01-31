@@ -7,7 +7,7 @@ import org.junit.Test;
  */
 public class VerticalTest {
 
-    private final Movimento mv = new Vertical();
+    private final Movimento mv = new Vertical(8);
     private final MovimentoTest mvT = new MovimentoTest();
 
 

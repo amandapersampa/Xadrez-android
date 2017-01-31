@@ -1,23 +1,17 @@
 package br.com.amanda.xadrez.cdp;
 
-/**
- * Created by amand on 27/01/2017.
- */
-
 public enum Cor {
-    BRANCA("SOMA"), PRETO("SUBTRAI"), INDIFERENTE();
-
-    private String operacao;
-
-    Cor(String operacao){
-        this.operacao = operacao;
-    }
-
-    Cor(){
-    }
+    BRANCA{
+        public boolean validar(Posicao posicao, Posicao nova){
+            return nova.getEixoX()>posicao.getEixoX();
+        }
+    }, PRETO{
+        public boolean validar(Posicao posicao, Posicao nova){
+            return nova.getEixoX()<posicao.getEixoX();
+        }
+    }, INDIFERENTE;
 
     public boolean validar(Posicao posicao, Posicao nova){
-        return (operacao.equals("SOMA") && nova.getEixoX()>posicao.getEixoX())
-                || (operacao.equals("SUBTRAI") && nova.getEixoX()<posicao.getEixoX());
+        return true;
     }
 }

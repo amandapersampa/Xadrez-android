@@ -3,7 +3,7 @@ package br.com.amanda.xadrez.cdp.movimentos;
 import org.junit.Test;
 
 public class DiagonalTest {
-    private final Movimento mv = new Diagonal();
+    private final Movimento mv = new Diagonal(8);
     private final MovimentoTest mvT = new MovimentoTest();
 
     @Test

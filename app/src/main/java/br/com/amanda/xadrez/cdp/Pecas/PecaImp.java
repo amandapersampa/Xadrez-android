@@ -1,4 +1,4 @@
-package br.com.amanda.xadrez.cdp.Pecas;
+package br.com.amanda.xadrez.cdp.pecas;
 
 import java.util.List;
 
@@ -10,50 +10,32 @@ import br.com.amanda.xadrez.utils.MovimentoNaoPermitidoError;
 
 public abstract class PecaImp implements Peca {
     private final Cor cor;
-    private Posicao posicao;
     private boolean primeiroMovimento;
+    private int movimentoMaximo;
+    private final String nome;
 
-    protected PecaImp(Posicao posicao, Cor cor) {
+    protected PecaImp(String nome, int movimentoMaximo, Cor cor) {
         this.cor = cor;
-        this.posicao = posicao;
         this.primeiroMovimento = true;
+        this.nome = nome;
+        this.movimentoMaximo = movimentoMaximo;
+    }
+
+    protected PecaImp(String nome, Cor cor) {
+        this.cor = cor;
+        this.primeiroMovimento = true;
+        this.nome = nome;
+        this.movimentoMaximo = 8;
     }
 
     @Override
-    public boolean validaMovimento(Posicao nova) {
-        return valida(this.posicao, nova, getMovimentos());
+    public boolean validaMovimento(Posicao posicao, Posicao nova) {
+        return valida(posicao, nova, getMovimentos());
     }
 
     @Override
-    public boolean validaConquista(Posicao nova) {
-        return valida(this.posicao, nova, getConquistas());
-    }
-
-    @Override
-    public Posicao getPosicao() {
-        return posicao;
-    }
-
-    @Override
-    public void mover(Posicao nova) throws MovimentoNaoPermitidoError {
-        if (validaMovimento(nova)) {
-            posicao = nova;
-            moveu();
-        }
-        else {
-            throw new MovimentoNaoPermitidoError();
-        }
-    }
-
-    @Override
-    public void conquistar(Posicao nova) throws ConquistaNaoPermitidaError {
-        if (validaConquista(nova)) {
-            posicao = nova;
-            moveu();
-        }
-        else {
-            throw new ConquistaNaoPermitidaError();
-        }
+    public boolean validaConquista(Posicao posicao, Posicao nova) {
+        return valida(posicao, nova, getConquistas());
     }
 
     protected abstract List<Movimento> getMovimentos();
@@ -66,19 +48,19 @@ public abstract class PecaImp implements Peca {
             valido = movimentos.get(0).isValido(atual, nova);
 
             for (Movimento m : movimentos) {
-                boolean movimentoEspecial = isMovimentoEspecial(nova);
+                boolean movimentoEspecial = isMovimentoEspecial(atual, nova);
                 valido = valido || m.isValido(atual, nova) || movimentoEspecial;
             }
-            valido = valido && corPermite(nova);
+            valido = valido && corPermite(atual, nova);
         }
         return valido;
     }
 
-    protected boolean isMovimentoEspecial(Posicao nova) {
+    protected boolean isMovimentoEspecial(Posicao posicao, Posicao nova) {
         return false;
     }
 
-    protected boolean corPermite(Posicao nova){
+    protected boolean corPermite(Posicao posicao, Posicao nova){
         return true;
     }
 
@@ -90,8 +72,24 @@ public abstract class PecaImp implements Peca {
         return this.primeiroMovimento;
     }
 
-    protected void moveu(){
-        this.primeiroMovimento = false;
+    @Override
+    public void moveu(){
+        if(isPrimeiroMovimento()) {
+            this.primeiroMovimento = false;
+        }
+    }
+
+    protected int getMovimentoMaximo(){
+        return movimentoMaximo;
+    }
+
+    protected void setMovimentoMaximo(int movimentoMaximo){
+        this.movimentoMaximo = movimentoMaximo;
+    }
+
+    @Override
+    public String getNome(){
+        return nome;
     }
 
 }

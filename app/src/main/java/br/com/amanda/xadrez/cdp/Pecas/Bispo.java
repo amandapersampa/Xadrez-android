@@ -1,4 +1,4 @@
-package br.com.amanda.xadrez.cdp.Pecas;
+package br.com.amanda.xadrez.cdp.pecas;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,10 +12,10 @@ import br.com.amanda.xadrez.cdp.movimentos.Movimento;
 public class Bispo extends PecaImp {
     private final List<Movimento> movimentos;
 
-    public Bispo(Posicao posicao, Cor cor) {
-        super(posicao,cor);
+    public Bispo(Cor cor) {
+        super("Bispo",cor);
         List<Movimento> mv = new ArrayList<>();
-        mv.add(new Diagonal());
+        mv.add(new Diagonal(getMovimentoMaximo()));
         this.movimentos = mv;
     }
 

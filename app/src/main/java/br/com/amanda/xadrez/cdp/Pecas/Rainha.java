@@ -1,4 +1,4 @@
-package br.com.amanda.xadrez.cdp.Pecas;
+package br.com.amanda.xadrez.cdp.pecas;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,12 +18,12 @@ import br.com.amanda.xadrez.cdp.movimentos.Vertical;
 public class Rainha extends PecaImp {
     private final List<Movimento> movimentos;
 
-    public Rainha(Posicao posicao, Cor cor) {
-        super(posicao,cor);
+    public Rainha(Cor cor) {
+        super("Rainha",cor);
         List<Movimento> mv = new ArrayList<>();
-        mv.add(new Vertical());
-        mv.add(new Horizontal());
-        mv.add(new Diagonal());
+        mv.add(new Vertical(getMovimentoMaximo()));
+        mv.add(new Horizontal(getMovimentoMaximo()));
+        mv.add(new Diagonal(getMovimentoMaximo()));
         this.movimentos = mv;
     }
 

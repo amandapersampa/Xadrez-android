@@ -1,4 +1,4 @@
-package br.com.amanda.xadrez.cdp.Pecas;
+package br.com.amanda.xadrez.cdp.pecas;
 
 import br.com.amanda.xadrez.cdp.Cor;
 import br.com.amanda.xadrez.cdp.Posicao;
@@ -10,15 +10,13 @@ import br.com.amanda.xadrez.utils.MovimentoNaoPermitidoError;
  */
 
 public interface Peca {
-    boolean validaMovimento(Posicao nova);
+    boolean validaMovimento(Posicao posicao,Posicao nova);
 
-    boolean validaConquista(Posicao nova);
-
-    Posicao getPosicao();
+    boolean validaConquista(Posicao posicao,Posicao nova);
 
     Cor getCor();
 
-    void mover(Posicao nova) throws MovimentoNaoPermitidoError;
+    String getNome();
 
-    void conquistar(Posicao nova) throws ConquistaNaoPermitidaError;
+    void moveu();
 }

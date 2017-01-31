@@ -3,11 +3,15 @@ package br.com.amanda.xadrez.cdp.movimentos;
 import br.com.amanda.xadrez.cdp.Posicao;
 import br.com.amanda.xadrez.cdp.PosicaoImp;
 
-public class Horizontal implements Movimento {
+public class Horizontal extends MovimentoImp {
+
+    public Horizontal(int movimentoMaximo){
+        super(movimentoMaximo);
+    }
 
     @Override
     public boolean isValido(Posicao posicao, Posicao nova) {
         Posicao pos = posicao.subtrai(nova);
-        return pos.getEixoX() == 0 && pos.getEixoY() != 0;
+        return pos.getEixoX() == 0 && pos.getEixoY() <= getMovimentoMaximo();
     }
 }

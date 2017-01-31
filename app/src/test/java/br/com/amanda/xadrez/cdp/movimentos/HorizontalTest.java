@@ -6,7 +6,7 @@ import org.junit.Test;
  * Created by amand on 26/01/2017.
  */
 public class HorizontalTest {
-    private final Movimento mv = new Horizontal();
+    private final Movimento mv = new Horizontal(8);
     private final MovimentoTest mvT = new MovimentoTest();
 
     @Test

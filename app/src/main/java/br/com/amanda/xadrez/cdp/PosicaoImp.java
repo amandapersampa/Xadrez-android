@@ -1,17 +1,21 @@
 package br.com.amanda.xadrez.cdp;
 
+import br.com.amanda.xadrez.cdp.pecas.Peca;
+
 public class PosicaoImp implements Posicao {
     private final int eixoX;
     private final int eixoY;
+    private Peca peca;
 
-    public PosicaoImp(int eixoX, int eixoY){
+    public PosicaoImp(Peca peca, int eixoX, int eixoY){
         this.eixoX = eixoX;
         this.eixoY = eixoY;
+        this.peca = peca;
     }
 
     @Override
     public Posicao subtrai(Posicao posicaoImp){
-        return new PosicaoImp(Math.abs(eixoX- posicaoImp.getEixoX()), Math.abs(eixoY- posicaoImp.getEixoY()));
+        return new PosicaoImp(posicaoImp.getPeca(), Math.abs(eixoX- posicaoImp.getEixoX()), Math.abs(eixoY- posicaoImp.getEixoY()));
     }
 
     public int getEixoX() {
@@ -22,14 +26,17 @@ public class PosicaoImp implements Posicao {
         return eixoY;
     }
 
+    public Peca getPeca(){
+        return peca;
+    }
+
     @Override
-    public boolean equals(Object o)
-    {
-        try{
-            return getEixoX() == ((Posicao) o).getEixoX() && getEixoY() == ((Posicao) o).getEixoY();
-        }
-        catch (Exception e){
-            return false;
-        }
+    public boolean mesmaPosicao(Posicao posicao) {
+        return this.getEixoY() == posicao.getEixoX() && this.getEixoY() == posicao.getEixoY();
+    }
+
+    @Override
+    public void setPeca(Peca peca){
+        this.peca = peca;
     }
 }

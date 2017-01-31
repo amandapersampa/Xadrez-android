@@ -2,7 +2,11 @@ package br.com.amanda.xadrez.cdp.movimentos;
 
 import br.com.amanda.xadrez.cdp.Posicao;
 
-public class L implements Movimento {
+public class L extends MovimentoImp {
+
+    public L(){
+        super(0);
+    }
 
     @Override
     public boolean isValido(Posicao posicao, Posicao nova) {

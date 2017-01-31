@@ -1,4 +1,4 @@
-package br.com.amanda.xadrez.cdp.Pecas;
+package br.com.amanda.xadrez.cdp.pecas;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,8 +12,8 @@ import br.com.amanda.xadrez.cdp.movimentos.Movimento;
 public class Cavalo extends PecaImp {
     private final List<Movimento> movimentos;
 
-    public Cavalo(Posicao posicao, Cor cor) {
-        super(posicao,cor);
+    public Cavalo(Cor cor) {
+        super("Cavalo",cor);
         List<Movimento> mv = new ArrayList<>();
         mv.add(new L());
         this.movimentos = mv;
@@ -27,5 +27,16 @@ public class Cavalo extends PecaImp {
     @Override
     protected List<Movimento> getConquistas(){
         return Collections.unmodifiableList(movimentos);
+    }
+
+    @Override
+    public boolean equals(Object o){
+        try{
+            Cavalo c = ((Cavalo) o);
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
     }
 }

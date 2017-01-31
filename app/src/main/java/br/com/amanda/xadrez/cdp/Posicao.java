@@ -1,8 +1,6 @@
 package br.com.amanda.xadrez.cdp;
 
-/**
- * Created by amand on 26/01/2017.
- */
+import br.com.amanda.xadrez.cdp.pecas.Peca;
 
 public interface Posicao {
     Posicao subtrai(Posicao posicaoImp);
@@ -10,5 +8,13 @@ public interface Posicao {
     int getEixoX();
 
     int getEixoY();
+
+    Peca getPeca();
+
+    boolean mesmaPosicao(Posicao posicao);
+
+    void setPeca(Peca peca);
+
+
 
 }

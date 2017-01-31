@@ -2,7 +2,10 @@ package br.com.amanda.xadrez.cdp.movimentos;
 
 import org.junit.Test;
 
+import br.com.amanda.xadrez.cdp.Cor;
 import br.com.amanda.xadrez.cdp.PosicaoImp;
+import br.com.amanda.xadrez.cdp.pecas.Bispo;
+import br.com.amanda.xadrez.cdp.pecas.Peca;
 
 import static org.junit.Assert.*;
 
@@ -10,13 +13,14 @@ import static org.junit.Assert.*;
  * Created by amand on 26/01/2017.
  */
 public class DiagonalDistancia1Test {
-    private final Movimento mv = new DiagonalDistancia1();
+    private final Movimento mv = new Diagonal(1);
+    private final Peca peca = new Bispo(Cor.BRANCA);
     private final MovimentoTest mvT = new MovimentoTest();
 
     @Test
     public void moveNaDiagonalDistancia1() throws Exception {
-        PosicaoImp p0 = new PosicaoImp(1,1);
-        PosicaoImp p1 = new PosicaoImp(0,0);
+        PosicaoImp p0 = new PosicaoImp(peca,1,1);
+        PosicaoImp p1 = new PosicaoImp(peca, 0,0);
 
         boolean possoMover = mv.isValido(p0,p1);
 
