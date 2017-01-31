@@ -5,25 +5,25 @@ jdk:
 before_install:
   - chmod +x gradlew
 
-android:
-  components:
-    - tools
-    - platform-tools
+#android:
+  #components:
+    #- tools
+    #- platform-tools
     # The BuildTools version used by your project
-    - build-tools-24.0.2
-    - android-22
-    - android-24
+    #- build-tools-24.0.2
+    #- android-22
+    #- android-24
     
     # Additional components
-    - extra-google-google_play_services
-    - extra-google-m2repository
-    - extra-android-m2repository
-    - sys-img-armeabi-v7a-android-24
-    - sys-img-armeabi-v7a-android-22
-    - extra-android-m2repository
+    #- extra-google-google_play_services
+    #- extra-google-m2repository
+    #- extra-android-m2repository
+    #- sys-img-armeabi-v7a-android-24
+    #- sys-img-armeabi-v7a-android-22
+    #- extra-android-m2repository
     
-  licenses:
-    - '.+'
+  #licenses:
+   # - '.+'
     
 addons:
   sonarqube:
