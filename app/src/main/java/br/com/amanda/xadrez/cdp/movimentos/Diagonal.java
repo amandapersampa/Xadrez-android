@@ -16,6 +16,6 @@ public class Diagonal extends MovimentoImp {
     @Override
     public boolean isValido(Posicao posicao, Posicao nova) {
         Posicao p = posicao.subtrai(nova);
-        return p.getEixoX() == p.getEixoY() && p.getEixoY()<= getMovimentoMaximo() && p.getEixoY()<=getMovimentoMaximo();
+        return (p.getEixoX() == p.getEixoY() && p.getEixoY()<= getMovimentoMaximo()) && p.getEixoY()<=getMovimentoMaximo();
     }
 }
