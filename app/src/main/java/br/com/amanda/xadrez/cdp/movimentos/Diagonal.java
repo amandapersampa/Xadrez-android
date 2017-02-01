@@ -18,4 +18,9 @@ public class Diagonal extends MovimentoImp {
         Posicao p = posicao.subtrai(nova);
         return (p.getEixoX() == p.getEixoY() && p.getEixoY()<= getMovimentoMaximo()) && p.getEixoY()<=getMovimentoMaximo();
     }
+
+    @Override
+    public Posicao andar(Posicao origem, Posicao destino) {
+        return origem.somaDiagonal(destino);
+    }
 }

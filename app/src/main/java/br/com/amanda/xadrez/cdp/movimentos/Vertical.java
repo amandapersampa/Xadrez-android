@@ -17,4 +17,9 @@ public class Vertical extends MovimentoImp {
         Posicao pos = posicao.subtrai(nova);
         return pos.getEixoX() <= getMovimentoMaximo() && pos.getEixoY() == 0;
     }
+
+    @Override
+    public Posicao andar(Posicao origem, Posicao destino) {
+        return origem.somaVertical(destino);
+    }
 }

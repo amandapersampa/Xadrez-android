@@ -14,4 +14,6 @@ public class L extends MovimentoImp {
         return  ((pos.getEixoX() == 1) && (pos.getEixoY()) == 2)
                 || ((pos.getEixoX() == 2) && (pos.getEixoY()) == 1);
     }
+
+
 }

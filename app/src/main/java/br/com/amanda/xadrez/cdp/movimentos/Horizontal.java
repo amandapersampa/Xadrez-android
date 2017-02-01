@@ -14,4 +14,9 @@ public class Horizontal extends MovimentoImp {
         Posicao pos = posicao.subtrai(nova);
         return pos.getEixoX() == 0 && pos.getEixoY() <= getMovimentoMaximo();
     }
+
+    @Override
+    public Posicao andar(Posicao origem, Posicao destino) {
+        return origem.somaHorizontal(destino);
+    }
 }

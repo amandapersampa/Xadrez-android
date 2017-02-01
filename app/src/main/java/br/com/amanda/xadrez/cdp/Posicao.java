@@ -13,6 +13,12 @@ public interface Posicao {
 
     boolean mesmaPosicao(Posicao posicao);
 
+    Posicao somaVertical(Posicao destino);
+
+    Posicao somaHorizontal(Posicao destino);
+
+    Posicao somaDiagonal(Posicao destino);
+
     void setPeca(Peca peca);
 
 

@@ -8,4 +8,6 @@ public interface Movimento {
     int getMovimentoMaximo();
 
     void setMovimentoMaximo(int movimentoMaximo);
+
+    Posicao andar(Posicao origem, Posicao destino);
 }

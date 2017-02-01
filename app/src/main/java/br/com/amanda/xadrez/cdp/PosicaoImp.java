@@ -13,6 +13,11 @@ public class PosicaoImp implements Posicao {
         this.peca = peca;
     }
 
+    public PosicaoImp(int eixoX, int eixoY){
+        this.eixoX = eixoX;
+        this.eixoY = eixoY;
+    }
+
     @Override
     public Posicao subtrai(Posicao posicaoImp){
         return new PosicaoImp(posicaoImp.getPeca(), Math.abs(eixoX- posicaoImp.getEixoX()), Math.abs(eixoY- posicaoImp.getEixoY()));
@@ -31,6 +36,35 @@ public class PosicaoImp implements Posicao {
     }
 
     @Override
+    public Posicao somaVertical(Posicao destino) {
+        int eixoXFinal = eixoX;
+        if(this.eixoX > destino.getEixoX())
+            eixoXFinal -= 1;
+        else{
+            eixoXFinal += 1;
+        }
+        return new PosicaoImp(eixoXFinal, this.eixoY);
+    }
+
+    @Override
+    public Posicao somaHorizontal(Posicao destino) {
+        int eixoYFinal = eixoY;
+        if(this.eixoY > destino.getEixoY())
+            eixoYFinal -= 1;
+        else{
+            eixoYFinal += 1;
+        }
+        return new PosicaoImp(this.eixoX, eixoYFinal);
+    }
+
+    @Override
+    public Posicao somaDiagonal(Posicao destino) {
+        Posicao p = somaVertical(destino);
+        p = p.somaHorizontal(destino);
+        return p;
+    }
+
+    @Override
     public boolean mesmaPosicao(Posicao posicao) {
         return this.getEixoY() == posicao.getEixoX() && this.getEixoY() == posicao.getEixoY();
     }
@@ -39,4 +73,6 @@ public class PosicaoImp implements Posicao {
     public void setPeca(Peca peca){
         this.peca = peca;
     }
+
+
 }
