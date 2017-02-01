@@ -33,7 +33,6 @@ public class PecaFactory {
         pecas.add(new Rei(preto));
         pecas.add(new Peao(preto));
         pecas.add(vazia);
-        pecas.add(new Parede());
     }
 
     public Peca fabricar(String peca, Cor cor) throws PecaInexistenteError {

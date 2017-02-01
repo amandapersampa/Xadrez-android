@@ -25,14 +25,4 @@ public class Vazio extends PecaImp {
         return null;
     }
 
-    @Override
-    public boolean equals(Object o){
-        try{
-            Vazio vazio = ((Vazio) o);
-            return true;
-        }
-        catch (Exception e){
-            return false;
-        }
-    }
 }

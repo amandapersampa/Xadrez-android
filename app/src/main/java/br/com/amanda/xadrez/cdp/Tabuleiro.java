@@ -87,26 +87,4 @@ public class Tabuleiro {
             throw new ConquistaNaoPermitidaError();
         }
     }
-
-    @Override
-    public String toString(){
-        String msg = "";
-        for(int i = 0 ; i<8 ; i++){
-            for( int j = 0 ; j < 8 ; j++) {
-                if(espacos[i][j] == null){
-                    msg += "null ";
-                }
-                else {
-                    msg += espacos[i][j].getPeca().getNome() + " ";
-                }
-            }
-            msg+="\n";
-        }
-        System.out.println(msg);
-        return "";
-    }
-
-    public PosicaoFactory getPosicaoFactory(){
-        return this.getPosicaoFactory();
-    }
 }

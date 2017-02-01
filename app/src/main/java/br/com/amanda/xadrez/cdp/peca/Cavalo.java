@@ -29,14 +29,4 @@ public class Cavalo extends PecaImp {
         return Collections.unmodifiableList(movimentos);
     }
 
-    @Override
-    public boolean equals(Object o){
-        try{
-            Cavalo c = ((Cavalo) o);
-            return true;
-        }
-        catch (Exception e){
-            return false;
-        }
-    }
 }
