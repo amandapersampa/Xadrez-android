@@ -4,13 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.amanda.xadrez.cdp.Cor;
-import br.com.amanda.xadrez.cdp.Posicao;
-import br.com.amanda.xadrez.cdp.PosicaoFactory;
 import br.com.amanda.xadrez.utils.PecaInexistenteError;
-
-/**
- * Created by amand on 28/01/2017.
- */
 
 public class PecaFactory {
     private final List<Peca> pecas;

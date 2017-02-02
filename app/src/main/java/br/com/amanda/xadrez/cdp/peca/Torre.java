@@ -3,16 +3,10 @@ package br.com.amanda.xadrez.cdp.peca;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import br.com.amanda.xadrez.cdp.Cor;
-import br.com.amanda.xadrez.cdp.Posicao;
 import br.com.amanda.xadrez.cdp.movimentos.Horizontal;
 import br.com.amanda.xadrez.cdp.movimentos.Movimento;
 import br.com.amanda.xadrez.cdp.movimentos.Vertical;
-
-/**
- * Created by amand on 26/01/2017.
- */
 
 public class Torre extends PecaImp {
     private final List<Movimento> movimentos;

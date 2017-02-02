@@ -1,8 +1,6 @@
 package br.com.amanda.xadrez.cdp;
 
 import java.util.List;
-
-import br.com.amanda.xadrez.cdp.movimentos.Movimento;
 import br.com.amanda.xadrez.cdp.peca.Peca;
 import br.com.amanda.xadrez.cdp.peca.PecaFactory;
 import br.com.amanda.xadrez.utils.ConquistaNaoPermitidaError;

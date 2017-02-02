@@ -3,8 +3,6 @@ package br.com.amanda.xadrez.cdp.peca;
 import br.com.amanda.xadrez.cdp.Cor;
 import br.com.amanda.xadrez.cdp.Posicao;
 import br.com.amanda.xadrez.cdp.PosicaoFactory;
-import br.com.amanda.xadrez.utils.ConquistaNaoPermitidaError;
-import br.com.amanda.xadrez.utils.MovimentoNaoPermitidoError;
 import br.com.amanda.xadrez.utils.PecaInexistenteError;
 
 /**

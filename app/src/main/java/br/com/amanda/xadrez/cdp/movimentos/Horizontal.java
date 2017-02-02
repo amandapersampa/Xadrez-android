@@ -1,7 +1,6 @@
 package br.com.amanda.xadrez.cdp.movimentos;
 
 import br.com.amanda.xadrez.cdp.Posicao;
-import br.com.amanda.xadrez.cdp.PosicaoImp;
 
 public class Horizontal extends MovimentoImp {
 
