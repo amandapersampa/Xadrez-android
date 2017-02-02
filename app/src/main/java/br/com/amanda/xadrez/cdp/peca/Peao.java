@@ -51,10 +51,8 @@ public class Peao extends PecaImp {
         if(this.isPrimeiroMovimento()) {
             super.moveu();
             setMovimentoMaximo(1);
-            List<Movimento> mv = new ArrayList<>();
-            mv.add(new Vertical(getMovimentoMaximo()));
-            List<Movimento> cq = new ArrayList<>();
-            cq.add(new Diagonal(getMovimentoMaximo()));
+            this.movimentos.get(0).setMovimentoMaximo(1);
+            this.conquistas.get(0).setMovimentoMaximo(1);
         }
     }
 }

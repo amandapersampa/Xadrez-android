@@ -16,7 +16,7 @@ public class PosicaoFactory {
         posicoes = new Posicao[tabuleiro][tabuleiro];
         for(int i = 0 ; i< tabuleiro; i++){
             for ( int j = 0 ; j<tabuleiro ; j++){
-                posicoes[i][j] = new PosicaoImp(pecaFactory.vazio(), i , j);
+                posicoes[i][j] = new PosicaoImp(PecaFactory.vazio(), i , j);
             }
         }
         this.pecaFactory = pecaFactory;

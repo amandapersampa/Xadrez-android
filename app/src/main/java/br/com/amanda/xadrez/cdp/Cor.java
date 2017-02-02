@@ -7,7 +7,7 @@ public enum Cor {
         }
     }, PRETO{
         public boolean validar(Posicao posicao, Posicao nova){
-            return nova.getEixoX()<posicao.getEixoX();
+            return nova.getEixoX()< posicao.getEixoX();
         }
     }, INDIFERENTE;
 

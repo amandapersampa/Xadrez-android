@@ -107,7 +107,7 @@ public abstract class PecaImp implements Peca {
             Posicao anterior = atual;
             Posicao posterior = posicaoFactory.fabricarPosicaoAndada(anterior, nova, m);
             while (!posterior.mesmaPosicao(nova) && valido && posterior.noLimite()) {
-                valido = valido && posterior.isVazio();
+                valido = posterior.isVazio();
                 anterior = posterior;
                 posterior = posicaoFactory.fabricarPosicaoAndada(anterior, nova, m);
                 if(anterior.mesmaPosicao(posterior)){

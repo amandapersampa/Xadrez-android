@@ -22,7 +22,7 @@ public class Tabuleiro {
         this.pecaFactory = posicaoFactory.getPecaFactory();
         this.largura = posicaoFactory.getLargura();
         this.espacos = posicaoFactory.getTabuleiroVazio();
-        this.vazio = pecaFactory.vazio();
+        this.vazio = PecaFactory.vazio();
         adicionaPecasIniciais(7, Cor.PRETO);
         adicionaPeao(6, Cor.PRETO);
         adicionaPecasIniciais(0, Cor.BRANCA);

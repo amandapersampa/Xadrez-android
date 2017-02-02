@@ -17,7 +17,7 @@ public class PosicaoFactoryTest {
 
         for(int i = 0; i<8 ; i++){
             for( int j = 0; j< 8 ; j++) {
-                posicoes[i][j] = pf.fabricarPosicao(pecaf.vazio(), i, j);
+                posicoes[i][j] = pf.fabricarPosicao(PecaFactory.vazio(), i, j);
                 System.out.print(posicoes[i][j].getPeca().getNome()+" ");
             }
             System.out.println();
