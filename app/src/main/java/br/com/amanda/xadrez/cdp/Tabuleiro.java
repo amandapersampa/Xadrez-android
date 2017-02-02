@@ -2,6 +2,7 @@ package br.com.amanda.xadrez.cdp;
 
 import java.util.List;
 
+import br.com.amanda.xadrez.cdp.movimentos.Movimento;
 import br.com.amanda.xadrez.cdp.peca.Peca;
 import br.com.amanda.xadrez.cdp.peca.PecaFactory;
 import br.com.amanda.xadrez.utils.ConquistaNaoPermitidaError;
@@ -57,14 +58,14 @@ public class Tabuleiro {
     }
 
     public Peca getPeca(Posicao posicao) {
-        return espacos[posicao.getEixoY()][posicao.getEixoY()].getPeca();
+        return espacos[posicao.getEixoX()][posicao.getEixoY()].getPeca();
     }
 
     public void mover(Posicao posicao, Posicao nova) throws MovimentoNaoPermitidoError, PecaInexistenteError {
-        Peca novaPeca = getPeca(nova);
-        Peca atualPeca = getPeca(posicao);
+        Peca novaPeca = nova.getPeca();
+        Peca atualPeca = posicao.getPeca();
 
-        if (novaPeca.equals(this.vazio) && atualPeca.validaMovimento(posicao,nova)) {
+        if (novaPeca.equals(this.vazio) && atualPeca.validaMovimento(posicao,nova, posicaoFactory)) {
             posicao.setPeca(this.vazio);
             nova.setPeca(atualPeca);
             atualPeca.moveu();
@@ -78,7 +79,7 @@ public class Tabuleiro {
     public void conquistar(Posicao posicao, Posicao nova) throws ConquistaNaoPermitidaError, PecaInexistenteError {
         Peca novaPeca = getPeca(nova);
         Peca atualPeca = getPeca(posicao);
-        if (novaPeca.equals(vazio) && atualPeca.validaConquista(posicao,nova)) {
+        if (novaPeca.equals(vazio) && atualPeca.validaConquista(posicao,nova, posicaoFactory)) {
             posicao.setPeca(this.vazio);
             nova.setPeca(atualPeca);
             atualPeca.moveu();
@@ -87,4 +88,5 @@ public class Tabuleiro {
             throw new ConquistaNaoPermitidaError();
         }
     }
+
 }

@@ -4,9 +4,11 @@ import java.util.List;
 
 import br.com.amanda.xadrez.cdp.Cor;
 import br.com.amanda.xadrez.cdp.Posicao;
+import br.com.amanda.xadrez.cdp.PosicaoFactory;
 import br.com.amanda.xadrez.cdp.movimentos.Movimento;
 import br.com.amanda.xadrez.utils.ConquistaNaoPermitidaError;
 import br.com.amanda.xadrez.utils.MovimentoNaoPermitidoError;
+import br.com.amanda.xadrez.utils.PecaInexistenteError;
 
 public abstract class PecaImp implements Peca {
     private final Cor cor;
@@ -29,27 +31,29 @@ public abstract class PecaImp implements Peca {
     }
 
     @Override
-    public boolean validaMovimento(Posicao posicao, Posicao nova) {
-        return valida(posicao, nova, getMovimentos());
+    public boolean validaMovimento(Posicao posicao, Posicao nova, PosicaoFactory posicaoFactory) throws PecaInexistenteError {
+        return valida(posicao, nova, getMovimentos(), posicaoFactory);
     }
 
     @Override
-    public boolean validaConquista(Posicao posicao, Posicao nova) {
-        return valida(posicao, nova, getConquistas());
+    public boolean validaConquista(Posicao posicao, Posicao nova, PosicaoFactory posicaoFactory) throws PecaInexistenteError {
+        return valida(posicao, nova, getConquistas(), posicaoFactory);
     }
 
     protected abstract List<Movimento> getMovimentos();
 
     protected abstract List<Movimento> getConquistas();
 
-    protected boolean valida(Posicao atual, Posicao nova, List<Movimento> movimentos) {
+    protected boolean valida(Posicao atual, Posicao nova, List<Movimento> movimentos, PosicaoFactory posicaoFactory) throws PecaInexistenteError {
         boolean valido = false;
+        boolean movimentoEspecial;
+
         if (movimentos != null) {
             valido = movimentos.get(0).isValido(atual, nova);
 
             for (Movimento m : movimentos) {
-                boolean movimentoEspecial = isMovimentoEspecial(atual, nova);
-                valido = valido || m.isValido(atual, nova) || movimentoEspecial;
+                movimentoEspecial = isMovimentoEspecial(atual, nova);
+                valido = valido || campoLivre(atual, nova, m,posicaoFactory) || movimentoEspecial;
             }
             valido = valido && corPermite(atual, nova);
         }
@@ -90,6 +94,29 @@ public abstract class PecaImp implements Peca {
     @Override
     public String getNome(){
         return nome;
+    }
+
+    @Override
+    public boolean isVazio(){
+        return false;
+    }
+
+    private boolean campoLivre(Posicao atual, Posicao nova, Movimento m, PosicaoFactory posicaoFactory) throws PecaInexistenteError {
+        if(m.isValido(atual, nova)) {
+            boolean valido = true;
+            Posicao anterior = atual;
+            Posicao posterior = posicaoFactory.fabricarPosicaoAndada(anterior, nova, m);
+            while (!posterior.mesmaPosicao(nova) && valido && posterior.noLimite()) {
+                valido = valido && posterior.isVazio();
+                anterior = posterior;
+                posterior = posicaoFactory.fabricarPosicaoAndada(anterior, nova, m);
+                if(anterior.mesmaPosicao(posterior)){
+                    return false;
+                }
+            }
+            return valido;
+        }
+        return false;
     }
 
 }

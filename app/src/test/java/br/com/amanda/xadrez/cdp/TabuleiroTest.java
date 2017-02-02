@@ -51,9 +51,13 @@ public class TabuleiroTest {
         Posicao p0 = posicaoFactory.fabricarPosicao(torre, 0,0);
         Posicao p1 = posicaoFactory.fabricarPosicao(vazio, 3,0);
         Peca peca = tab.getPeca(p1);
-        tab.mover(p0, p1);
-        Peca movida = tab.getPeca(p1);
-        assertEquals(peca, movida);
+        try {
+            tab.mover(p0, p1);
+        }
+        catch (MovimentoNaoPermitidoError e) {
+            Peca movida = tab.getPeca(p1);
+            assertEquals(peca, movida);
+        }
     }
 
     @Test

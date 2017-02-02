@@ -25,4 +25,8 @@ public class Vazio extends PecaImp {
         return null;
     }
 
+    @Override
+    public boolean isVazio(){
+        return true;
+    }
 }

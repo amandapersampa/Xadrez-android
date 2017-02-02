@@ -3,7 +3,13 @@ package br.com.amanda.xadrez.cdp.pecas;
 import org.junit.Test;
 
 import br.com.amanda.xadrez.cdp.Cor;
+import br.com.amanda.xadrez.cdp.Posicao;
+import br.com.amanda.xadrez.cdp.PosicaoFactory;
+import br.com.amanda.xadrez.cdp.peca.Peca;
+import br.com.amanda.xadrez.cdp.peca.PecaFactory;
 import br.com.amanda.xadrez.utils.PecaInexistenteError;
+
+import static org.junit.Assert.assertEquals;
 
 public class PeaoPretoTest {
     private final PecaTest teste = new PecaTest("Peao", Cor.PRETO);
@@ -78,7 +84,15 @@ public class PeaoPretoTest {
 
     @Test
     public void testaConquistaDiagonal() throws Exception {
-        teste.testaConquistaDiagonal(false);
+        PosicaoFactory posicaoFactory = new PosicaoFactory(new PecaFactory(), 8);
+        PecaFactory pecaFactory = posicaoFactory.getPecaFactory();
+        Peca peca = pecaFactory.fabricar("Peao", Cor.PRETO);
+        Posicao p1 = posicaoFactory.fabricarPosicao(4,4);
+        Posicao p0 = posicaoFactory.fabricarPosicao(5,5);
+
+        boolean possoMover = peca.validaConquista(p0, p1, posicaoFactory);
+
+        assertEquals(true, possoMover);
     }
 
     @Test

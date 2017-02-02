@@ -43,7 +43,7 @@ public class PosicaoImp implements Posicao {
         else{
             eixoXFinal += 1;
         }
-        return new PosicaoImp(eixoXFinal, this.eixoY);
+        return new PosicaoImp(this.getPeca(),eixoXFinal, this.eixoY);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class PosicaoImp implements Posicao {
         else{
             eixoYFinal += 1;
         }
-        return new PosicaoImp(this.eixoX, eixoYFinal);
+        return new PosicaoImp(this.getPeca(),this.eixoX, eixoYFinal);
     }
 
     @Override
@@ -65,13 +65,23 @@ public class PosicaoImp implements Posicao {
     }
 
     @Override
+    public boolean isVazio() {
+        return peca.isVazio();
+    }
+
+    @Override
     public boolean mesmaPosicao(Posicao posicao) {
-        return this.getEixoY() == posicao.getEixoX() && this.getEixoY() == posicao.getEixoY();
+        return this.getEixoX() == posicao.getEixoX() && this.getEixoY() == posicao.getEixoY();
     }
 
     @Override
     public void setPeca(Peca peca){
         this.peca = peca;
+    }
+
+    @Override
+    public boolean noLimite() {
+        return eixoX < 8 && eixoY <8;
     }
 
 

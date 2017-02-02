@@ -14,7 +14,7 @@ import br.com.amanda.xadrez.utils.PecaInexistenteError;
 
 public class PecaFactory {
     private final List<Peca> pecas;
-    private final Peca vazia = new Vazio();
+    private static final Peca vazia = new Vazio();
 
     public PecaFactory(){
         pecas = new ArrayList<>();
@@ -44,7 +44,7 @@ public class PecaFactory {
         throw new PecaInexistenteError();
     }
 
-    public Peca vazio(){
+    public static Peca vazio(){
         return vazia;
     }
 }

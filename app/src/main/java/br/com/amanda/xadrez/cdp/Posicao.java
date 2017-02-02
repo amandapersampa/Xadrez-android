@@ -19,8 +19,10 @@ public interface Posicao {
 
     Posicao somaDiagonal(Posicao destino);
 
+    boolean isVazio();
+
     void setPeca(Peca peca);
 
 
-
+    boolean noLimite();
 }

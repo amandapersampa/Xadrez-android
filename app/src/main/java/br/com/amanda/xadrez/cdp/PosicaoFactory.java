@@ -1,5 +1,6 @@
 package br.com.amanda.xadrez.cdp;
 
+import br.com.amanda.xadrez.cdp.movimentos.Movimento;
 import br.com.amanda.xadrez.cdp.peca.PecaFactory;
 import br.com.amanda.xadrez.cdp.peca.Peca;
 import br.com.amanda.xadrez.utils.PecaInexistenteError;
@@ -28,6 +29,11 @@ public class PosicaoFactory {
 
     public Posicao fabricarPosicao(int eixoX, int eixoY) throws PecaInexistenteError{
         return posicoes[eixoX][eixoY];
+    }
+
+    public Posicao fabricarPosicaoAndada(Posicao origem, Posicao destino, Movimento movimento) throws PecaInexistenteError{
+        Posicao p = movimento.andar(origem, destino);
+         return posicoes[p.getEixoX()][p.getEixoY()];
     }
 
     public Posicao[][] getTabuleiroVazio(){
