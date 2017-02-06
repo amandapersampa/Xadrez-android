@@ -5,13 +5,23 @@ public enum Cor {
         public boolean validar(Posicao posicao, Posicao nova){
             return nova.getEixoX()>posicao.getEixoX();
         }
+        public Cor getOposto() {
+            return Cor.PRETO;
+        }
     }, PRETO{
         public boolean validar(Posicao posicao, Posicao nova){
             return nova.getEixoX()< posicao.getEixoX();
+        }
+        public Cor getOposto() {
+            return Cor.BRANCA;
         }
     }, INDIFERENTE;
 
     public boolean validar(Posicao posicao, Posicao nova){
         return true;
+    }
+
+    public Cor getOposto() {
+        return Cor.INDIFERENTE;
     }
 }

@@ -29,6 +29,11 @@ public class PecaTest {
         return posicaoFactory.fabricarPosicao(peca, posX, posY);
     }
 
+    private Posicao getP1(PosicaoFactory posicaoFactory, int novoX, int novoY) throws PecaInexistenteError {
+        Peca peca = posicaoFactory.getPecaFactory().fabricar(nome, cor.getOposto());
+        return posicaoFactory.fabricarPosicao(peca, novoX, novoY);
+    }
+
     @Test
     public void testaMovimentoDiagonalDistancia1(boolean expected) throws Exception {
         assertEquals(expected, validaMovimento(posX-1, posY-1));
@@ -56,12 +61,12 @@ public class PecaTest {
 
     @Test
     public void testaMovimentoVertical(boolean expected) throws Exception {
-        assertEquals(expected, validaMovimento(posX, posY-4));
+        assertEquals(expected, validaMovimento(posX-4, posY));
     }
 
     @Test
     public void testaMovimentoHorizontal(boolean expected) throws Exception {
-        assertEquals(expected, validaMovimento(posX-3, posY));
+        assertEquals(expected, validaMovimento(posX, posY-3));
     }
 
     @Test
@@ -71,7 +76,7 @@ public class PecaTest {
 
     @Test
     public void testaConquistaHorizontal(boolean expected) throws Exception {
-        assertEquals(expected, validaMovimento(posX, posY+2));
+        assertEquals(expected, validaConquista(posX, posY+2));
     }
 
     @Test
@@ -96,7 +101,7 @@ public class PecaTest {
 
     @Test
     public void testaConquistaDiagonal(boolean expected) throws Exception {
-        assertEquals(expected, validaMovimento(posX+2, posY+2));
+        assertEquals(expected, validaConquista(posX-3, posY-3));
     }
 
    @Test
@@ -106,7 +111,7 @@ public class PecaTest {
 
     @Test
     public void testaConquistaVertical(boolean expected) throws Exception {
-        assertEquals(expected, validaMovimento(posX, posY-5));
+        assertEquals(expected, validaConquista(posX-5, posY));
     }
 
     private boolean validaMovimento(int novoX, int novoY) throws PecaInexistenteError {
@@ -119,7 +124,7 @@ public class PecaTest {
     private boolean validaConquista(int novoX, int novoY) throws PecaInexistenteError {
         PosicaoFactory posicaoFactory = new PosicaoFactory(new PecaFactory(), 8);
         Posicao p0 = getP0(posicaoFactory);
-        Posicao p1 = posicaoFactory.fabricarPosicao(novoX,novoY);
+        Posicao p1 = getP1(posicaoFactory, novoX,novoY);
         return p0.getPeca().validaConquista(p0, p1, posicaoFactory);
 
     }

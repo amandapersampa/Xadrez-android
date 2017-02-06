@@ -60,29 +60,23 @@ public class Tabuleiro {
     }
 
     public void mover(Posicao posicao, Posicao nova) throws MovimentoNaoPermitidoError, PecaInexistenteError {
-        Peca novaPeca = nova.getPeca();
         Peca atualPeca = posicao.getPeca();
-
-        if (novaPeca.equals(this.vazio) && atualPeca.validaMovimento(posicao,nova, posicaoFactory)) {
+        if (atualPeca.validaMovimento(posicao,nova, posicaoFactory)) {
             posicao.setPeca(this.vazio);
             nova.setPeca(atualPeca);
             atualPeca.moveu();
-        }
-
-        else{
+        }else{
             throw new MovimentoNaoPermitidoError();
         }
     }
 
     public void conquistar(Posicao posicao, Posicao nova) throws ConquistaNaoPermitidaError, PecaInexistenteError {
-        Peca novaPeca = getPeca(nova);
         Peca atualPeca = getPeca(posicao);
-        if (novaPeca.equals(vazio) && atualPeca.validaConquista(posicao,nova, posicaoFactory)) {
+        if (atualPeca.validaConquista(posicao,nova, posicaoFactory)) {
             posicao.setPeca(this.vazio);
             nova.setPeca(atualPeca);
             atualPeca.moveu();
-        }
-        else{
+        }else{
             throw new ConquistaNaoPermitidaError();
         }
     }

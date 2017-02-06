@@ -44,6 +44,10 @@ public class PosicaoFactory {
         return pecaFactory;
     }
 
+    public Peca getVazio() throws PecaInexistenteError {
+        return pecaFactory.fabricar("Vazio", Cor.INDIFERENTE);
+    }
+
     public int getLargura(){
         return this.largura;
     }

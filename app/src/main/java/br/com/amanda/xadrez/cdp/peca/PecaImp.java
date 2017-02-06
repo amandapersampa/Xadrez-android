@@ -29,88 +29,97 @@ public abstract class PecaImp implements Peca {
     }
 
     @Override
-    public boolean validaMovimento(Posicao posicao, Posicao nova, PosicaoFactory posicaoFactory) throws PecaInexistenteError {
-        return valida(posicao, nova, getMovimentos(), posicaoFactory);
-    }
-
-    @Override
-    public boolean validaConquista(Posicao posicao, Posicao nova, PosicaoFactory posicaoFactory) throws PecaInexistenteError {
-        return valida(posicao, nova, getConquistas(), posicaoFactory);
-    }
-
-    protected abstract List<Movimento> getMovimentos();
-
-    protected abstract List<Movimento> getConquistas();
-
-    protected boolean valida(Posicao atual, Posicao nova, List<Movimento> movimentos, PosicaoFactory posicaoFactory) throws PecaInexistenteError {
+    public boolean validaMovimento(Posicao atual, Posicao nova, PosicaoFactory posicaoFactory) throws PecaInexistenteError {
         boolean valido = false;
         boolean movimentoEspecial;
-
-        if (movimentos != null) {
-            valido = movimentos.get(0).isValido(atual, nova);
-
+        List<Movimento> movimentos = getMovimentos();
+        if (movimentos != null && nova.isVazio()) {
             for (Movimento m : movimentos) {
+                valido =  valido || m.isValido(atual, nova);
                 movimentoEspecial = isMovimentoEspecial(atual, nova);
-                valido = valido || campoLivre(atual, nova, m,posicaoFactory) || movimentoEspecial;
+                valido = valido || campoLivre(atual, nova, m, posicaoFactory) || movimentoEspecial;
             }
             valido = valido && corPermite(atual, nova);
         }
         return valido;
     }
 
+    @Override
+    public boolean validaConquista(Posicao atual, Posicao nova, PosicaoFactory posicaoFactory) throws PecaInexistenteError {
+        boolean valido = false;
+        boolean movimentoEspecial;
+        List<Movimento> conquistas = getConquistas();
+        if (conquistas != null && !nova.isVazio() && !nova.getPeca().getCor().equals(cor)) {
+            int i = 0;
+            while (i<conquistas.size() && !valido) {
+                Movimento m = conquistas.get(i);
+                valido = m.isValido(atual, nova);
+                movimentoEspecial = isMovimentoEspecial(atual, nova);
+                valido = valido || campoLivre(atual, nova, m, posicaoFactory) || movimentoEspecial;
+                i++;
+            }
+            valido = valido && corPermite(atual, nova);
+        }
+        return valido;
+    }
+
+    protected abstract List<Movimento> getMovimentos();
+
+    protected abstract List<Movimento> getConquistas();
+
     protected boolean isMovimentoEspecial(Posicao posicao, Posicao nova) {
         return false;
     }
 
-    protected boolean corPermite(Posicao posicao, Posicao nova){
+    protected boolean corPermite(Posicao posicao, Posicao nova) {
         return true;
     }
 
-    public Cor getCor(){
+    public Cor getCor() {
         return cor;
     }
 
-    protected boolean isPrimeiroMovimento(){
+    protected boolean isPrimeiroMovimento() {
         return this.primeiroMovimento;
     }
 
     @Override
-    public void moveu(){
-        if(isPrimeiroMovimento()) {
+    public void moveu() {
+        if (isPrimeiroMovimento()) {
             this.primeiroMovimento = false;
         }
     }
 
-    protected int getMovimentoMaximo(){
+    protected int getMovimentoMaximo() {
         return movimentoMaximo;
     }
 
-    protected void setMovimentoMaximo(int movimentoMaximo){
+    protected void setMovimentoMaximo(int movimentoMaximo) {
         this.movimentoMaximo = movimentoMaximo;
     }
 
     @Override
-    public String getNome(){
+    public String getNome() {
         return nome;
     }
 
     @Override
-    public boolean isVazio(){
+    public boolean isVazio() {
         return false;
     }
 
     private boolean campoLivre(Posicao atual, Posicao nova, Movimento m, PosicaoFactory posicaoFactory) throws PecaInexistenteError {
-        if(m.isValido(atual, nova)) {
+        if (m.isValido(atual, nova)) {
             boolean valido = true;
             Posicao anterior = atual;
             Posicao posterior = posicaoFactory.fabricarPosicaoAndada(anterior, nova, m);
             while (!posterior.mesmaPosicao(nova) && valido && posterior.noLimite()) {
                 valido = posterior.isVazio();
                 anterior = posterior;
-                posterior = posicaoFactory.fabricarPosicaoAndada(anterior, nova, m);
-                if(anterior.mesmaPosicao(posterior)){
+                if (anterior.mesmaPosicao(posterior)) {
                     return false;
                 }
+                posterior = posicaoFactory.fabricarPosicaoAndada(anterior, nova, m);
             }
             return valido;
         }

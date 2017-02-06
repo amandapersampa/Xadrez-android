@@ -86,11 +86,12 @@ public class PeaoPretoTest {
     public void testaConquistaDiagonal() throws Exception {
         PosicaoFactory posicaoFactory = new PosicaoFactory(new PecaFactory(), 8);
         PecaFactory pecaFactory = posicaoFactory.getPecaFactory();
-        Peca peca = pecaFactory.fabricar("Peao", Cor.PRETO);
-        Posicao p1 = posicaoFactory.fabricarPosicao(4,4);
-        Posicao p0 = posicaoFactory.fabricarPosicao(5,5);
+        Peca peaoP = pecaFactory.fabricar("Peao", Cor.PRETO);
+        Peca peaoB = pecaFactory.fabricar("Peao", Cor.BRANCA);
+        Posicao p1 = posicaoFactory.fabricarPosicao(peaoB, 4,4);
+        Posicao p0 = posicaoFactory.fabricarPosicao(peaoP, 5,5);
 
-        boolean possoMover = peca.validaConquista(p0, p1, posicaoFactory);
+        boolean possoMover = p0.getPeca().validaConquista(p0, p1, posicaoFactory);
 
         assertEquals(true, possoMover);
     }
