@@ -2,6 +2,8 @@ package br.com.amanda.xadrez.cdp;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import br.com.amanda.xadrez.cdp.peca.Peao;
 import br.com.amanda.xadrez.cdp.peca.Peca;
 import br.com.amanda.xadrez.cdp.peca.PecaFactory;
@@ -12,12 +14,18 @@ import br.com.amanda.xadrez.utils.PecaInexistenteError;
 import static org.junit.Assert.*;
 
 public class TabuleiroTest {
-    public TabuleiroTest() throws PecaInexistenteError {
+
+    @Test
+    public void possiveisConquistas() throws Exception {
+
     }
 
     @Test
     public void possiveisMovimentos() throws Exception {
-
+        PosicaoFactory p = new PosicaoFactory(new PecaFactory(), 8);
+        Tabuleiro tab = new Tabuleiro(p);
+        List<Posicao> lp = tab.possiveisMovimentos(p.fabricarPosicao(1,1));
+        assertEquals(1, lp.size());
     }
 
     @Test

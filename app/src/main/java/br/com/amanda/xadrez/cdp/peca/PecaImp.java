@@ -1,10 +1,12 @@
 package br.com.amanda.xadrez.cdp.peca;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.amanda.xadrez.cdp.Cor;
 import br.com.amanda.xadrez.cdp.Posicao;
 import br.com.amanda.xadrez.cdp.PosicaoFactory;
+import br.com.amanda.xadrez.cdp.PosicaoImp;
 import br.com.amanda.xadrez.cdp.movimentos.Movimento;
 import br.com.amanda.xadrez.utils.PecaInexistenteError;
 
@@ -126,4 +128,16 @@ public abstract class PecaImp implements Peca {
         return false;
     }
 
+    public List<Posicao> possiveisMovimentos(Posicao posicao){
+        List<Posicao> pM = new ArrayList<>();
+        Movimento m = getMovimentos().get(0);
+        pM.add(m.a());
+        return pM;
+    }
+
+    public List<Posicao> possiveisConquistas(Posicao posicao){
+        List<Posicao> pM = new ArrayList<>();
+
+        return pM;
+    }
 }

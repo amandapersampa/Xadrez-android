@@ -52,7 +52,11 @@ public class Tabuleiro {
     }
 
     public List<Posicao> possiveisMovimentos(Posicao posicao) {
-        return null;
+        return posicao.getPeca().possiveisMovimentos(posicao);
+    }
+
+    public List<Posicao> possiveisConquistas(Posicao posicao) {
+        return posicao.getPeca().possiveisConquistas(posicao);
     }
 
     public Peca getPeca(Posicao posicao) {
@@ -60,6 +64,7 @@ public class Tabuleiro {
     }
 
     public void mover(Posicao posicao, Posicao nova) throws MovimentoNaoPermitidoError, PecaInexistenteError {
+
         Peca atualPeca = posicao.getPeca();
         if (atualPeca.validaMovimento(posicao,nova, posicaoFactory)) {
             posicao.setPeca(this.vazio);
