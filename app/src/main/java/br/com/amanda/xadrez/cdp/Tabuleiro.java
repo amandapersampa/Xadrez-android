@@ -1,5 +1,6 @@
 package br.com.amanda.xadrez.cdp;
 
+import java.util.ArrayList;
 import java.util.List;
 import br.com.amanda.xadrez.cdp.peca.Peca;
 import br.com.amanda.xadrez.cdp.peca.PecaFactory;
@@ -51,12 +52,17 @@ public class Tabuleiro {
         espacos[posX][posY] = posicao;
     }
 
-    public List<Posicao> possiveisMovimentos(Posicao posicao) {
-        return posicao.getPeca().possiveisMovimentos(posicao);
+    public List<Posicao> possiveisMovimentos(Posicao posicao) throws PecaInexistenteError {
+        List<Posicao> redor = posicaoFactory.getPosicoesAoRedor(posicao);
+        List<Posicao> movimentos = new ArrayList<>();
+        for(Posicao p : redor){
+            posicaoFactory.possiveisMovimentos(posicao, p);
+        }
+        return movimentos;
     }
 
     public List<Posicao> possiveisConquistas(Posicao posicao) {
-        return posicao.getPeca().possiveisConquistas(posicao);
+        return posicaoFactory.possiveisConquistas(posicao, posicao);
     }
 
     public Peca getPeca(Posicao posicao) {
@@ -64,9 +70,9 @@ public class Tabuleiro {
     }
 
     public void mover(Posicao posicao, Posicao nova) throws MovimentoNaoPermitidoError, PecaInexistenteError {
-
         Peca atualPeca = posicao.getPeca();
-        if (atualPeca.validaMovimento(posicao,nova, posicaoFactory)) {
+        boolean isLivre = posicaoFactory.campoLivre(posicao, nova);
+        if (atualPeca.validaMovimento(posicao,nova)&& isLivre) {
             posicao.setPeca(this.vazio);
             nova.setPeca(atualPeca);
             atualPeca.moveu();
@@ -77,7 +83,7 @@ public class Tabuleiro {
 
     public void conquistar(Posicao posicao, Posicao nova) throws ConquistaNaoPermitidaError, PecaInexistenteError {
         Peca atualPeca = getPeca(posicao);
-        if (atualPeca.validaConquista(posicao,nova, posicaoFactory)) {
+        if (atualPeca.validaConquista(posicao,nova) && posicaoFactory.campoLivre(posicao,nova)) {
             posicao.setPeca(this.vazio);
             nova.setPeca(atualPeca);
             atualPeca.moveu();

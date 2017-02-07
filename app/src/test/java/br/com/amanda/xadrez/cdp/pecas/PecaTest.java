@@ -118,14 +118,14 @@ public class PecaTest {
         PosicaoFactory posicaoFactory = new PosicaoFactory(new PecaFactory(), 8);
         Posicao p0 = getP0(posicaoFactory);
         Posicao p1 = posicaoFactory.fabricarPosicao(novoX,novoY);
-        return p0.getPeca().validaMovimento(p0, p1, posicaoFactory);
+        return p0.getPeca().validaMovimento(p0, p1);
     }
 
     private boolean validaConquista(int novoX, int novoY) throws PecaInexistenteError {
         PosicaoFactory posicaoFactory = new PosicaoFactory(new PecaFactory(), 8);
         Posicao p0 = getP0(posicaoFactory);
         Posicao p1 = getP1(posicaoFactory, novoX,novoY);
-        return p0.getPeca().validaConquista(p0, p1, posicaoFactory);
+        return p0.getPeca().validaConquista(p0, p1);
 
     }
 

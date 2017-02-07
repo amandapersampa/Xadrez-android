@@ -5,6 +5,7 @@ public enum Cor {
         public boolean validar(Posicao posicao, Posicao nova){
             return nova.getEixoX()>posicao.getEixoX();
         }
+        @Override
         public Cor getOposto() {
             return Cor.PRETO;
         }
@@ -12,6 +13,7 @@ public enum Cor {
         public boolean validar(Posicao posicao, Posicao nova){
             return nova.getEixoX()< posicao.getEixoX();
         }
+        @Override
         public Cor getOposto() {
             return Cor.BRANCA;
         }

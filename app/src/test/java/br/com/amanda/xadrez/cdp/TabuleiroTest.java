@@ -25,7 +25,7 @@ public class TabuleiroTest {
         PosicaoFactory p = new PosicaoFactory(new PecaFactory(), 8);
         Tabuleiro tab = new Tabuleiro(p);
         List<Posicao> lp = tab.possiveisMovimentos(p.fabricarPosicao(1,1));
-        assertEquals(1, lp.size());
+        assertEquals(0, lp.size());
     }
 
     @Test

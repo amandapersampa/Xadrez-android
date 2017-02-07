@@ -1,12 +1,9 @@
 package br.com.amanda.xadrez.cdp.peca;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.amanda.xadrez.cdp.Cor;
 import br.com.amanda.xadrez.cdp.Posicao;
-import br.com.amanda.xadrez.cdp.PosicaoFactory;
-import br.com.amanda.xadrez.cdp.PosicaoImp;
 import br.com.amanda.xadrez.cdp.movimentos.Movimento;
 import br.com.amanda.xadrez.utils.PecaInexistenteError;
 
@@ -31,33 +28,14 @@ public abstract class PecaImp implements Peca {
     }
 
     @Override
-    public boolean validaMovimento(Posicao atual, Posicao nova, PosicaoFactory posicaoFactory) throws PecaInexistenteError {
+    public boolean validaMovimento(Posicao atual, Posicao nova) throws PecaInexistenteError {
         boolean valido = false;
-        boolean movimentoEspecial;
+        int i = 0;
         List<Movimento> movimentos = getMovimentos();
         if (movimentos != null && nova.isVazio()) {
-            for (Movimento m : movimentos) {
-                valido =  valido || m.isValido(atual, nova);
-                movimentoEspecial = isMovimentoEspecial(atual, nova);
-                valido = valido || campoLivre(atual, nova, m, posicaoFactory) || movimentoEspecial;
-            }
-            valido = valido && corPermite(atual, nova);
-        }
-        return valido;
-    }
-
-    @Override
-    public boolean validaConquista(Posicao atual, Posicao nova, PosicaoFactory posicaoFactory) throws PecaInexistenteError {
-        boolean valido = false;
-        boolean movimentoEspecial;
-        List<Movimento> conquistas = getConquistas();
-        if (conquistas != null && !nova.isVazio() && !nova.getPeca().getCor().equals(cor)) {
-            int i = 0;
-            while (i<conquistas.size() && !valido) {
-                Movimento m = conquistas.get(i);
-                valido = m.isValido(atual, nova);
-                movimentoEspecial = isMovimentoEspecial(atual, nova);
-                valido = valido || campoLivre(atual, nova, m, posicaoFactory) || movimentoEspecial;
+            while (i< movimentos.size() && !valido) {
+                Movimento m = movimentos.get(i);
+                valido = m.isValido(atual, nova) || isMovimentoEspecial(atual, nova);
                 i++;
             }
             valido = valido && corPermite(atual, nova);
@@ -65,9 +43,25 @@ public abstract class PecaImp implements Peca {
         return valido;
     }
 
-    protected abstract List<Movimento> getMovimentos();
+    @Override
+    public boolean validaConquista(Posicao atual, Posicao nova) throws PecaInexistenteError {
+        boolean valido = false;
+        List<Movimento> conquistas = getConquistas();
+        if (conquistas != null && !nova.isVazio() && !nova.getPeca().getCor().equals(cor)) {
+            int i = 0;
+            while (i<conquistas.size() && !valido) {
+                Movimento m = conquistas.get(i);
+                valido = m.isValido(atual, nova) || isMovimentoEspecial(atual, nova);
+                i++;
+            }
+            valido = valido && corPermite(atual, nova);
+        }
+        return valido;
+    }
 
-    protected abstract List<Movimento> getConquistas();
+    public abstract List<Movimento> getMovimentos();
+
+    public abstract List<Movimento> getConquistas();
 
     protected boolean isMovimentoEspecial(Posicao posicao, Posicao nova) {
         return false;
@@ -110,34 +104,8 @@ public abstract class PecaImp implements Peca {
         return false;
     }
 
-    private boolean campoLivre(Posicao atual, Posicao nova, Movimento m, PosicaoFactory posicaoFactory) throws PecaInexistenteError {
-        if (m.isValido(atual, nova)) {
-            boolean valido = true;
-            Posicao anterior = atual;
-            Posicao posterior = posicaoFactory.fabricarPosicaoAndada(anterior, nova, m);
-            while (!posterior.mesmaPosicao(nova) && valido && posterior.noLimite()) {
-                valido = posterior.isVazio();
-                anterior = posterior;
-                if (anterior.mesmaPosicao(posterior)) {
-                    return false;
-                }
-                posterior = posicaoFactory.fabricarPosicaoAndada(anterior, nova, m);
-            }
-            return valido;
-        }
+    @Override
+    public boolean isSaltador(){
         return false;
-    }
-
-    public List<Posicao> possiveisMovimentos(Posicao posicao){
-        List<Posicao> pM = new ArrayList<>();
-        Movimento m = getMovimentos().get(0);
-        pM.add(m.a());
-        return pM;
-    }
-
-    public List<Posicao> possiveisConquistas(Posicao posicao){
-        List<Posicao> pM = new ArrayList<>();
-
-        return pM;
     }
 }

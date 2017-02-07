@@ -22,12 +22,12 @@ public class Peao extends PecaImp {
     }
 
     @Override
-    protected List<Movimento> getMovimentos() {
+    public List<Movimento> getMovimentos() {
         return movimentos;
     }
 
     @Override
-    protected List<Movimento> getConquistas() {
+    public List<Movimento> getConquistas() {
         return conquistas;
     }
 

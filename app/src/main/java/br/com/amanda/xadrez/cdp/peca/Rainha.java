@@ -22,12 +22,12 @@ public class Rainha extends PecaImp {
     }
 
     @Override
-    protected List<Movimento> getMovimentos() {
+    public List<Movimento> getMovimentos() {
         return Collections.unmodifiableList(movimentos);
     }
 
     @Override
-    protected List<Movimento> getConquistas() {
+    public List<Movimento> getConquistas() {
         return Collections.unmodifiableList(movimentos);
     }
 }

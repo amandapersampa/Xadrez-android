@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.amanda.xadrez.cdp.Cor;
 import br.com.amanda.xadrez.cdp.Posicao;
-import br.com.amanda.xadrez.cdp.PosicaoFactory;
+import br.com.amanda.xadrez.cdp.movimentos.Movimento;
 import br.com.amanda.xadrez.utils.PecaInexistenteError;
 
 /**
@@ -12,13 +12,9 @@ import br.com.amanda.xadrez.utils.PecaInexistenteError;
  */
 
 public interface Peca {
-    boolean validaMovimento(Posicao posicao, Posicao nova, PosicaoFactory posicaoFactory) throws PecaInexistenteError;
+    boolean validaMovimento(Posicao posicao, Posicao nova) throws PecaInexistenteError;
 
-    boolean validaConquista(Posicao posicao, Posicao nova, PosicaoFactory posicaoFactory) throws PecaInexistenteError;
-
-    List<Posicao> possiveisMovimentos(Posicao posicao);
-
-    List<Posicao> possiveisConquistas(Posicao posicao);
+    boolean validaConquista(Posicao posicao, Posicao nova) throws PecaInexistenteError;
 
     Cor getCor();
 
@@ -27,4 +23,10 @@ public interface Peca {
     void moveu();
 
     boolean isVazio();
+
+    List<Movimento> getMovimentos();
+
+    List<Movimento> getConquistas();
+
+    boolean isSaltador();
 }

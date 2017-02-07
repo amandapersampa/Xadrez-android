@@ -91,8 +91,7 @@ public class PeaoPretoTest {
         Posicao p1 = posicaoFactory.fabricarPosicao(peaoB, 4,4);
         Posicao p0 = posicaoFactory.fabricarPosicao(peaoP, 5,5);
 
-        boolean possoMover = p0.getPeca().validaConquista(p0, p1, posicaoFactory);
-
+        boolean possoMover = p0.getPeca().validaConquista(p0, p1);
         assertEquals(true, possoMover);
     }
 

@@ -1,5 +1,7 @@
 package br.com.amanda.xadrez.cdp;
 
+import java.util.List;
+
 import br.com.amanda.xadrez.cdp.peca.Peca;
 
 public interface Posicao {
@@ -25,4 +27,5 @@ public interface Posicao {
 
 
     boolean noLimite();
+
 }

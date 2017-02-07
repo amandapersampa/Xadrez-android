@@ -12,12 +12,12 @@ public class Vazio extends PecaImp {
     }
 
     @Override
-    protected List<Movimento> getMovimentos() {
+    public List<Movimento> getMovimentos() {
         return new ArrayList<>();
     }
 
     @Override
-    protected List<Movimento> getConquistas() {
+    public List<Movimento> getConquistas() {
         return new ArrayList<>();
     }
 
